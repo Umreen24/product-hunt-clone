@@ -1,33 +1,38 @@
 {% extends 'base.html' %}
+<html>
+    <head>
+    </head>
+        <body>
 
-{% block content %}
+            {% block content %}
+            {% if error %}
+            {{ error }}
+            <br />
+            <br />
+            {% endif %}
 
-{% if error %}
-{{ error }}
-<br />
-<br />
-{% endif %}
+            <h1>Register</h1>
 
-<h1>Register</h1>
+            <form method="POST" action="{% url 'signup' %}">
+            {% csrf_token %}
 
-<form method="POST" action="{% url 'signup' %}">
-{% csrf_token %}
+            Username
+            <br/>
+            <input type="text" name="username" />
+            <br/>
+            Password
+            <br/>
+            <input type="password" name="password"/>
+            <br/>
+            Confirm password
+            <br/>
+            <input type="password" name="password_confirm"/>
+            <br/>
+            <br/>
+            <input class="btn btn-dark" type="submit" value="Register Now"/>
 
-Username
-<br/>
-<input type="text" name="username" />
-<br/>
-Password
-<br/>
-<input type="password" name="password"/>
-<br/>
-Confirm password
-<br/>
-<input type="password" name="password_confirm"/>
-<br/>
-<br/>
-<input class="btn btn-dark" type="submit" value="Register Now"/>
+            </form>
+            {% endblock %}
 
-</form>
-
-{% endblock %}
+        </body>
+</html>
